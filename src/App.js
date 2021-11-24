@@ -58,6 +58,7 @@ function App() {
         }
         return (
           <Card 
+            item={item}
             isOpen={popupOpen}
             isClose={popupClose}  
             thumbnail={thumbnail} 
@@ -79,9 +80,12 @@ function App() {
       ) 
     } else {
       return (
-        <div className='cards__list'>
-          {item}
-        </div>
+        <>
+          <h2 className='cards__counter'>Found: {item.length}</h2>
+          <div className='cards__list'>
+            {item}
+          </div>
+        </>
       )
     }
   }

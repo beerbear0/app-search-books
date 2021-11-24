@@ -1,6 +1,7 @@
 import './Popup.css';
 
 function Popup ({
+    item,
     isOpen,
     isClose,
     thumbnail,
@@ -9,7 +10,7 @@ function Popup ({
     authors,
 }) {
     return (
-        <div className='popup__background'>    
+        <div className={`popup__background  ${item ? 'popup__opened' : '' }`}>    
             <div className='popup'>
                 
                 <div className='popup__image_block'>
@@ -21,7 +22,7 @@ function Popup ({
                     <p className='popup__author'>{authors}</p>
                     <h3 className='popup__text'>{}</h3>
                 </div>
-                <button className='popup__btn-close' />
+                <button className='popup__btn-close'  onClick='isClose'/>
             </div>
         </div>  
     )

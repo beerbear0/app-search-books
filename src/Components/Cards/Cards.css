@@ -1,6 +1,3 @@
-.cards{
-    /* position: relative; */
-}
 .cards__list {
     display: grid;
     grid-template-columns: repeat(4, 330px);
@@ -12,7 +9,8 @@
 
 .cards__counter {
     margin: 30px auto 0 auto;
-    width: 270px;
+    width: auto;
+    text-align: center;
 }
 
 @media (max-width: 1500px) {

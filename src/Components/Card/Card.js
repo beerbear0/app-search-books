@@ -3,6 +3,7 @@ import Popup from '../Popup/Popup';
 import './Card.css'
 
 function Card ({
+    item,
     isOpen,
     isClose,     
     thumbnail,
@@ -23,6 +24,7 @@ function Card ({
             <p className='card__author'>{authors}</p>
         </div>
         <Popup 
+            item={item}
             isOpen={isOpen}
             isClose={isClose}
             thumbnail={thumbnail}
