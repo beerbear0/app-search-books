@@ -1,15 +1,15 @@
 .popup {
     display: flex;
-    /* display: none; */
     position: fixed;
     background-color: white;
     top:100px;
-    left:200px;
-   
+    left:200px;  
+}
+.popup__opened {
+    display: flex;
 }
 .popup__background {
     display: none;
-    /* display: flex; */
     position: fixed;
     width: 100%;
     height: 100%;

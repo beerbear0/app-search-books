@@ -1,12 +1,21 @@
 import React from 'react';
 import './Header.css'
-function Header () {
+function Header ({handleSubmit, query, setQuery}) {
+    function onChange (evt) {
+        setQuery(evt.target.value)
+    }
+    
     return(
         <section className='header'>
             <h1 className="header__title"> Search for books </h1>
             <form className='header__form'>
-                <input className='header__input' />
-                <button className='header__btn-search'>Поиск</button> 
+                <input 
+                className='header__input' 
+                value={query}
+                onChange={onChange}
+                required
+                />
+                <button className='header__btn-search' onClick={handleSubmit}>Поиск</button> 
                 <div className='header__selects'>
                     <p className='header__text'>Categories</p>
                     <select className='header__select'>
