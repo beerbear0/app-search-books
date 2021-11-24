@@ -1,0 +1,33 @@
+.card {
+    background-color: #cccccc;
+    width: 300px;
+    /* height: 700px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+}
+
+.card__image {
+    width: 250px;
+    margin: 20px auto 20px auto;
+
+}
+.card__categories {
+    color: grey;
+    text-decoration: underline;
+    margin: 0;
+}
+.card__title {
+    margin: 15px 0 15px 0;
+}
+.card__author {
+    color: grey;
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    .card {
+        width: 280px;
+    }
+}
