@@ -10,8 +10,6 @@ import Card from './Components/Card/Card';
 import Popup from './Components/Popup/Popup';
 function App() {
 
-  const [openPopup, setOpenPopup] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,18 +35,6 @@ function App() {
     }
 
   }
-
-  function popupOpen() {
-    setOpenPopup(true)
-  }
-  function handleCardClick (card) {
-    setSelectedCard(card)
-  }
-  function popupClose () {
-    setOpenPopup(false)
-    setSelectedCard(false)
-  }
-
   const handleCard = () => {
     console.log(cards)
     const item = cards.map((item, i) => {
@@ -57,16 +43,12 @@ function App() {
           thumbnail = item.volumeInfo.imageLinks.thumbnail
         }
         return (
-          <Card 
-            item={item}
-            isOpen={popupOpen}
-            isClose={popupClose}  
+          <Card key={item.id}
             thumbnail={thumbnail} 
             title={item.volumeInfo.title}
             categories={item.volumeInfo.categories}
             authors={item.volumeInfo.authors}
             description={item.volumeInfo.description}
-            
         />
         )
     })
@@ -98,9 +80,6 @@ function App() {
       />
      
       <Cards 
-        isOpen={popupOpen}
-        isClose={popupClose}
-        selectedCard={selectedCard}
         handleCard={handleCard}
       />
       <ToastContainer />
