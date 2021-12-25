@@ -6,41 +6,46 @@ import Cards from './Components/Cards/Cards';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import axios from 'axios';
-import Card from './Components/Card/Card';
-import Popup from './Components/Popup/Popup';
+import Card from './Components/Card/Card'
 function App() {
 
   const [cards, setCards] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const [maxResult, setMaxResult] = useState(10);
+  const [startIndex, setStartIndex] = useState(1)
 
   function handleSubmit (e) {
     e.preventDefault();
     setLoading(true);
-    if(query.length < 1) {
-      toast.error('Введите ключевое слово')
+
+    if(maxResult > 40 || maxResult < 1) {
+      toast.error('Введите max result от 1 до 40')
     } else {
-      axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
-        .then(res => {
-          if(res.data.items.length > 0) {
-            setCards(res.data.items)
-            setLoading(false)
-          }  
-        })
+      axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResult}&startIndex=${startIndex}`)
+      .then(res => {
+          if(startIndex >=res.data.totalItems || startIndex < 1) {
+              toast.error(`Введите Start Index от 1 до ${res.data.totalItems}`)
+          }
+          else {
+              if(res.data.items.length > 0) {
+                      setCards(res.data.items)
+                      setLoading(false)
+                  }
+              }
+          })
         .catch(err => {
           setLoading(true)
-          toast.error(`${err.message}`)
+          toast.error(`${err.response.data.error.message}`)
         })
     }
+}
 
-  }
   const handleCard = () => {
-    console.log(cards)
     const item = cards.map((item, i) => {
         let thumbnail = '';
         if(item.volumeInfo.imageLinks.thumbnail) {
-          thumbnail = item.volumeInfo.imageLinks.thumbnail
+          thumbnail = item.volumeInfo.imageLinks.thumbnail;
         }
         return (
           <Card key={item.id}
@@ -77,6 +82,10 @@ function App() {
         handleSubmit={handleSubmit}
         query={query}
         setQuery={setQuery}
+        startIndex={startIndex}
+        setStartIndex={setStartIndex}
+        maxResult={maxResult}
+        setMaxResult={setMaxResult}
       />
      
       <Cards 

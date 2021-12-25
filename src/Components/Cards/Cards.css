@@ -12,7 +12,14 @@
     width: auto;
     text-align: center;
 }
-
+.cards__btn {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border: none;
+    color: black;
+    width: 90%;
+    margin: 50px auto;
+    
+} 
 @media (max-width: 1500px) {
     .cards__list {
         grid-template-columns: repeat(3, 330px);

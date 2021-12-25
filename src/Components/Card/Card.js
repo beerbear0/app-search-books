@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Popup from '../Popup/Popup';
 import { Modal, Button } from 'reactstrap';
 import './Card.css'
 
@@ -19,7 +18,7 @@ function Card ({
             <p className='card__categories'>{categories}</p>
             <h2 className='card__title'>{title}</h2>
             <p className='card__author'>{authors}</p>
-            <Button onClick={toggle}>More Info</Button>
+            <Button className='card__margin' onClick={toggle}>More Info</Button>
             {/* <button type='button' onClick={handleCardClick}>Узнать больше</button> */}
         </div>
         <Modal toggle={toggle} isOpen={modal}>

@@ -25,7 +25,10 @@
     color: grey;
     margin: 0;
 }
-
+.card__margin {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
 @media (max-width: 560px) {
     .card {
         width: 280px;
